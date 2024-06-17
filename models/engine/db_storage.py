@@ -71,36 +71,36 @@ class DBStorage:
                     pass
             return obj_dict
 
-        def new(self, obj):
-            """
+    def new(self, obj):
+        """
 
-            """
+        """
 
-            self.__session.add(obj)
-
-
-        def save(self):
-            """
-
-            """
-            self.__session.commit()
+        self.__session.add(obj)
 
 
-        def delete(self, obj=None):
-            """
+    def save(self):
+        """
 
-            """
+        """
+        self.__session.commit()
 
-            self.__session.delete(obj)
+
+    def delete(self, obj=None):
+        """
+
+        """
+
+        self.__session.delete(obj)
 
 
-        def reload(self):
-            """
+    def reload(self):
+        """
 
-            """
+        """
 
-            Base.metadata.create_all(self.__engine)
-            session_factory = sessionmaker(bind=self.__engine,
-                                           expire_on_commit=False)
-            Session = scoped_session(session_factory)
-            self.__session = Session()
+        Base.metadata.create_all(self.__engine)
+        session_factory = sessionmaker(bind=self.__engine,
+                                       expire_on_commit=False)
+        Session = scoped_session(session_factory)
+        self.__session = Session()
